@@ -49,6 +49,8 @@
 
  <!-- 2.2 Files -->
 
+ <rule ref="PSR2.Classes.ClassDeclaration"/>
+
  <!-- All PHP files MUST use the Unix LF (linefeed) line ending. -->
  <rule ref="Generic.Files.LineEndings">
   <properties>
