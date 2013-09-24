@@ -62,11 +62,12 @@ class DPSI_Sniffs_Classes_ClassFileNameSniff implements PHP_CodeSniffer_Sniff
         $decName  = $phpcsFile->findNext(T_STRING, $stackPtr);
         $fullPath = basename($phpcsFile->getFilename());
         $fileName = substr($fullPath, 0, strrpos($fullPath, '.'));
-        if ($tokens[$decName]['content'] !== $fileName) {
-            $error = '%s name doesn\'t match filename; expected "%s.php"';
+
+        if (strtolower($tokens[$decName]['content']) !== $fileName) {
+            $error = '%s name doesn\'t match filename; expected "%s %s"';
             $data  = array(
                       ucfirst($tokens[$stackPtr]['content']),
-                      $tokens[$decName]['content'],
+                      strtolower($tokens[$decName]['content']),
                       "",
                      );
             $phpcsFile->addError($error, $stackPtr, 'NoMatch', $data);
