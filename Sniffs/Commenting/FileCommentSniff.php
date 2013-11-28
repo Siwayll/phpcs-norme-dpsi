@@ -71,7 +71,7 @@ class DPSI_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_Sniff
                                         'order_text'     => 'precedes @package',
                                        ),
                        'package'    => array(
-                                        'required'       => true,
+                                        'required'       => false,
                                         'allow_multiple' => false,
                                         'order_text'     => 'follows @category',
                                        ),
