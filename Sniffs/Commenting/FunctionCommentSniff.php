@@ -447,6 +447,14 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSniffer_Sni
                     $this->currentFile->addError($error, $errorPos, 'MissingParamComment', $data);
                 }
 
+
+                if ($paramComment[0] != strtoupper($paramComment[0])) {
+                    $error = 'Le commentaire de "%s" doit commencer par une majuscule';
+                    $data  = array($paramName);
+                    $this->currentFile->addError($error, $errorPos, 'MissingParamCommentUpper', $data);
+
+                }
+
                 $previousParam = $param;
 
             }//end foreach
