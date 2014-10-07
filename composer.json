@@ -1,0 +1,14 @@
+{
+  "name": "siwayll/phpcs-norme-dpsi",
+  "type": "PHPCS standard",
+  "description": "Standard DPSI for PHPCS",
+  "homepage": "https://github.com/Siwayll/phpcs-norme-dpsi",
+  "keywords": ["PHPCS"],
+  "license": "MIT",
+  "support": {
+      "issues": "https://github.com/Siwayll/phpcs-norme-dpsi/issues"
+  },
+  "require": {
+      "squizlabs/php_codesniffer": "~1.5"
+  }
+}
