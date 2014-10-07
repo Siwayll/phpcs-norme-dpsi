@@ -1,6 +1,6 @@
 {
   "name": "siwayll/phpcs-norme-dpsi",
-  "type": "PHPCS standard",
+  "type": "library",
   "description": "Standard DPSI for PHPCS",
   "homepage": "https://github.com/Siwayll/phpcs-norme-dpsi",
   "keywords": ["PHPCS"],
