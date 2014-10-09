@@ -63,6 +63,17 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting
         }
 
         parent::process($phpcsFile, $stackPtr);
+
+        $comment = $this->commentParser->getComment();
+        if ($comment !== null) {
+            $text = $comment->getContent();
+            if ($text[0] != strtoupper($text[0])) {
+                $commentStart = ($phpcsFile->findPrevious(T_DOC_COMMENT, ($commentEnd - 1), null, true) + 1);
+                $errorPos = ($comment->getLine() + $commentStart);
+                $error = 'Comment must start with an uppercase';
+                $this->currentFile->addError($error, $errorPos, 'MissingCommentUpper');
+            }
+        }
     }
 
     /**
