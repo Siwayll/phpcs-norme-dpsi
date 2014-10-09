@@ -125,6 +125,21 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting
         }
 
         parent::processParams($commentStart);
+
+        // Force uppercase for first letter of a param comment
+        $params = $this->commentParser->getParams();
+        if (empty($params) === false) {
+            foreach ($params as $param) {
+                $paramComment = trim($param->getComment());
+                if ($paramComment[0] != strtoupper($paramComment[0])) {
+                    $errorPos = ($param->getLine() + $commentStart);
+                    $paramName = ($param->getVarName() !== '') ? $param->getVarName() : '[ UNKNOWN ]';
+                    $error = 'Comment of "%s" must start with an uppercase';
+                    $data  = array($paramName);
+                    $this->currentFile->addError($error, $errorPos, 'MissingParamCommentUpper', $data);
+                }
+            }
+        }
     } // end processParams()
 
     /**
