@@ -67,7 +67,7 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting
         $comment = $this->commentParser->getComment();
         if ($comment !== null) {
             $text = $comment->getContent();
-            if ($text[0] != strtoupper($text[0])) {
+            if (!empty($text) && $text[0] != strtoupper($text[0])) {
                 $commentStart = ($phpcsFile->findPrevious(T_DOC_COMMENT, ($commentEnd - 1), null, true) + 1);
                 $errorPos = ($comment->getLine() + $commentStart);
                 $error = 'Comment must start with an uppercase';
@@ -142,7 +142,7 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting
         if (empty($params) === false) {
             foreach ($params as $param) {
                 $paramComment = trim($param->getComment());
-                if ($paramComment[0] != strtoupper($paramComment[0])) {
+                if (!empty($paramComment) && $paramComment[0] != strtoupper($paramComment[0])) {
                     $errorPos = ($param->getLine() + $commentStart);
                     $paramName = ($param->getVarName() !== '') ? $param->getVarName() : '[ UNKNOWN ]';
                     $error = 'Comment of "%s" must start with an uppercase';
