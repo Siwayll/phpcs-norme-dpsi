@@ -64,6 +64,10 @@ class DPSI_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting
 
         parent::process($phpcsFile, $stackPtr);
 
+        if (empty($this->commentParser)) {
+            return;
+        }
+
         $comment = $this->commentParser->getComment();
         if ($comment !== null) {
             $text = $comment->getContent();
