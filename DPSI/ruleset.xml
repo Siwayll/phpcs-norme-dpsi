@@ -5,4 +5,5 @@
     <!-- Basé sur le standard PSR2 -->
     <rule ref="PSR2"/>
 
+     <rule ref="Generic.Formatting.SpaceAfterCast"/>
 </ruleset>
